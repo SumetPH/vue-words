@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Words</title>
+    <script src="./oxford.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <h1>{{word}}</h1>
+      </div>
+      <iframe
+        style="width: 100%; height: 600px;"
+        :src="dict"
+        frameborder="0"
+      ></iframe>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          word: "",
+          dict: "",
+        },
+        mounted() {
+          const word = getWord();
+          this.word = word;
+          this.dict = `https://dict.longdo.com/mobile.php?search=${word}`;
+        },
+      });
+    </script>
+  </body>
+</html>
